@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { RouteData, RoutePoint, Coordinates, Location } from '../types/weather';
+import { RouteData, RoutePoint, Coordinates } from '../types/weather';
 
 const OPENROUTE_SERVICE_URL = 'https://api.openrouteservice.org/v2/directions/driving-car';
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Coordinates } from '../types/weather';
 
 interface RouteInputProps {
   onCalculateRoute: (start: string, end: string, pickupDate: string, deliveryDate: string) => void;

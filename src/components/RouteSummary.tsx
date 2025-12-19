@@ -6,7 +6,6 @@ interface RouteSummaryProps {
 }
 
 export const RouteSummary = ({ routeData }: RouteSummaryProps) => {
-  const estimatedHours = Math.round(routeData.duration / 3600 * 10) / 10; // Round to 1 decimal
   const averageSpeed = routeData.distance / (routeData.duration / 3600); // km/h
 
   return (

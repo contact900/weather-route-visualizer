@@ -1,5 +1,5 @@
 import { WaypointWeather } from '../types/weather';
-import { formatTemperature, formatWindSpeed, formatVisibility, getWeatherIconUrl, capitalizeFirst } from '../utils/formatHelpers';
+import { formatTemperature, formatWindSpeed, formatVisibility, getWeatherIconUrl } from '../utils/formatHelpers';
 import { isSevereWeather, isSevereWind, isSevereVisibility } from '../utils/weatherHelpers';
 
 interface WeatherCardProps {

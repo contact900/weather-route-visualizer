@@ -1,5 +1,4 @@
-import { WaypointWeather, ForecastWeather } from '../types/weather';
-import { formatTemperature } from '../utils/formatHelpers';
+import { WaypointWeather } from '../types/weather';
 import { isSevereWeather, isSevereWind, isSevereVisibility } from '../utils/weatherHelpers';
 
 export interface WeatherAdvice {

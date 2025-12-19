@@ -49,8 +49,7 @@ export const getWaypointWeather = async (
   location: Location,
   apiKey: string,
   pickupDate: Date,
-  deliveryDate: Date,
-  estimatedArrivalDate?: Date
+  deliveryDate: Date
 ): Promise<WaypointWeather> => {
   try {
     const [current, forecast] = await Promise.all([
@@ -84,10 +83,6 @@ export const getWeatherForWaypoints = async (
   deliveryDate: Date
 ): Promise<WaypointWeather[]> => {
   try {
-    // Calculate estimated arrival times for each waypoint based on route duration
-    const totalDuration = deliveryDate.getTime() - pickupDate.getTime();
-    const durationPerWaypoint = totalDuration / locations.length;
-
     // Process weather requests in parallel batches for better performance
     // OpenWeatherMap free tier allows up to 60 calls/minute, so we can be more aggressive
     const batchSize = 5; // Process 5 requests at a time
@@ -97,10 +92,8 @@ export const getWeatherForWaypoints = async (
       const batch = locations.slice(i, i + batchSize);
       
       // Process batch in parallel
-      const batchPromises = batch.map((location, batchIndex) => {
-        const index = i + batchIndex;
-        const estimatedArrival = new Date(pickupDate.getTime() + (durationPerWaypoint * index));
-        return getWaypointWeather(location, apiKey, pickupDate, deliveryDate, estimatedArrival);
+      const batchPromises = batch.map((location) => {
+        return getWaypointWeather(location, apiKey, pickupDate, deliveryDate);
       });
 
       const batchResults = await Promise.all(batchPromises);
